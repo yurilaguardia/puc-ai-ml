@@ -6,7 +6,7 @@ from hdf5_getters import open_h5_file_read
 from data_helpers import get_total_features, load_song_data
 
 
-PATH_R = "./millionsongsubset"
+PATH_R = "./MillionSongSubset"
 
 regex_half = {1: "[A-M]", 2: "[N-Z]"}
 
