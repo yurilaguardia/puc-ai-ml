@@ -1,0 +1,62 @@
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 3813 entries, 0 to 3812
+Data columns (total 54 columns):
+ #   Column                      Non-Null Count  Dtype  
+---  ------                      --------------  -----  
+ 0   analysis_sample_rate        3813 non-null   int32  
+ 1   artist_7digitalid           3813 non-null   int32  
+ 2   artist_familiarity          3811 non-null   float64
+ 3   artist_hotttnesss           3813 non-null   float64
+ 4   artist_id                   3813 non-null   object 
+ 5   artist_latitude             1392 non-null   float64
+ 6   artist_location             3813 non-null   object 
+ 7   artist_longitude            1392 non-null   float64
+ 8   artist_mbid                 3813 non-null   object 
+ 9   artist_mbtags               3813 non-null   object 
+ 10  artist_mbtags_count         3813 non-null   object 
+ 11  artist_name                 3813 non-null   object 
+ 12  artist_playmeid             3813 non-null   int32  
+ 13  artist_terms                3813 non-null   object 
+ 14  artist_terms_freq           3813 non-null   object 
+ 15  artist_terms_weight         3813 non-null   object 
+ 16  audio_md5                   3813 non-null   object 
+ 17  bars_confidence             3813 non-null   object 
+ 18  bars_start                  3813 non-null   object 
+ 19  beats_confidence            3813 non-null   object 
+ 20  beats_start                 3813 non-null   object 
+ 21  danceability                3813 non-null   float64
+ 22  duration                    3813 non-null   float64
+ 23  end_of_fade_in              3813 non-null   float64
+ 24  energy                      3813 non-null   float64
+ 25  key                         3813 non-null   int32  
+ 26  key_confidence              3813 non-null   float64
+ 27  loudness                    3813 non-null   float64
+ 28  mode                        3813 non-null   int32  
+ 29  mode_confidence             3813 non-null   float64
+ 30  release                     3813 non-null   object 
+ 31  release_7digitalid          3813 non-null   int32  
+ 32  sections_confidence         3813 non-null   object 
+ 33  sections_start              3813 non-null   object 
+ 34  segments_confidence         3813 non-null   object 
+ 35  segments_loudness_max       3813 non-null   object 
+ 36  segments_loudness_max_time  3813 non-null   object 
+ 37  segments_loudness_start     3813 non-null   object 
+ 38  segments_pitches            3813 non-null   object 
+ 39  segments_start              3813 non-null   object 
+ 40  segments_timbre             3813 non-null   object 
+ 41  similar_artists             3813 non-null   object 
+ 42  song_hotttnesss             2199 non-null   float64
+ 43  song_id                     3813 non-null   object 
+ 44  start_of_fade_out           3813 non-null   float64
+ 45  tatums_confidence           3813 non-null   object 
+ 46  tatums_start                3813 non-null   object 
+ 47  tempo                       3813 non-null   float64
+ 48  time_signature              3813 non-null   int32  
+ 49  time_signature_confidence   3813 non-null   float64
+ 50  title                       3813 non-null   object 
+ 51  track_7digitalid            3813 non-null   int32  
+ 52  track_id                    3813 non-null   object 
+ 53  year                        3813 non-null   int32  
+dtypes: float64(15), int32(9), object(30)
+memory usage: 1.4+ MB
+None
