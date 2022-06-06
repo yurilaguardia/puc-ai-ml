@@ -20,8 +20,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 """
 
 
-import tables
 import numpy as np
+import tables
 
 
 def open_h5_file_read(h5filename):
@@ -196,8 +196,8 @@ def get_artist_terms(h5, songidx=0):
 
 def get_artist_terms_freq(h5, songidx=0):
     """
-    Get artist terms array frequencies. Takes care of the proper indexing if we are in aggregate
-    file. By default, return the array for the first song in the h5 file.
+    Get artist terms array frequencies. Takes care of the proper indexing if we are in
+    aggregate file. By default, return the array for the first song in the h5 file.
     To get a regular numpy ndarray, cast the result to: numpy.array( )
     """
     if h5.root.metadata.songs.nrows == songidx + 1:
@@ -213,8 +213,8 @@ def get_artist_terms_freq(h5, songidx=0):
 
 def get_artist_terms_weight(h5, songidx=0):
     """
-    Get artist terms array frequencies. Takes care of the proper indexing if we are in aggregate
-    file. By default, return the array for the first song in the h5 file.
+    Get artist terms array frequencies. Takes care of the proper indexing if we are in
+    aggregate file. By default, return the array for the first song in the h5 file.
     To get a regular numpy ndarray, cast the result to: numpy.array( )
     """
     if h5.root.metadata.songs.nrows == songidx + 1:
@@ -359,8 +359,8 @@ def get_segments_start(h5, songidx=0):
 
 def get_segments_confidence(h5, songidx=0):
     """
-    Get segments confidence array. Takes care of the proper indexing if we are in aggregate
-    file. By default, return the array for the first song in the h5 file.
+    Get segments confidence array. Takes care of the proper indexing if we are in
+    aggregate file. By default, return the array for the first song in the h5 file.
     To get a regular numpy ndarray, cast the result to: numpy.array( )
     """
     if h5.root.analysis.songs.nrows == songidx + 1:
@@ -412,8 +412,8 @@ def get_segments_timbre(h5, songidx=0):
 
 def get_segments_loudness_max(h5, songidx=0):
     """
-    Get segments loudness max array. Takes care of the proper indexing if we are in aggregate
-    file. By default, return the array for the first song in the h5 file.
+    Get segments loudness max array. Takes care of the proper indexing if we are in
+    aggregate file. By default, return the array for the first song in the h5 file.
     To get a regular numpy ndarray, cast the result to: numpy.array( )
     """
     if h5.root.analysis.songs.nrows == songidx + 1:
@@ -429,8 +429,8 @@ def get_segments_loudness_max(h5, songidx=0):
 
 def get_segments_loudness_max_time(h5, songidx=0):
     """
-    Get segments loudness max time array. Takes care of the proper indexing if we are in aggregate
-    file. By default, return the array for the first song in the h5 file.
+    Get segments loudness max time array. Takes care of the proper indexing if we are
+    in aggregate file. By default, return the array for the first song in the h5 file.
     To get a regular numpy ndarray, cast the result to: numpy.array( )
     """
     if h5.root.analysis.songs.nrows == songidx + 1:
@@ -446,8 +446,8 @@ def get_segments_loudness_max_time(h5, songidx=0):
 
 def get_segments_loudness_start(h5, songidx=0):
     """
-    Get segments loudness start array. Takes care of the proper indexing if we are in aggregate
-    file. By default, return the array for the first song in the h5 file.
+    Get segments loudness start array. Takes care of the proper indexing if we are
+    in aggregate file. By default, return the array for the first song in the h5 file.
     To get a regular numpy ndarray, cast the result to: numpy.array( )
     """
     if h5.root.analysis.songs.nrows == songidx + 1:
@@ -480,8 +480,8 @@ def get_sections_start(h5, songidx=0):
 
 def get_sections_confidence(h5, songidx=0):
     """
-    Get sections confidence array. Takes care of the proper indexing if we are in aggregate
-    file. By default, return the array for the first song in the h5 file.
+    Get sections confidence array. Takes care of the proper indexing if we are
+    in aggregate file. By default, return the array for the first song in the h5 file.
     To get a regular numpy ndarray, cast the result to: numpy.array( )
     """
     if h5.root.analysis.songs.nrows == songidx + 1:
@@ -582,8 +582,8 @@ def get_tatums_start(h5, songidx=0):
 
 def get_tatums_confidence(h5, songidx=0):
     """
-    Get tatums confidence array. Takes care of the proper indexing if we are in aggregate
-    file. By default, return the array for the first song in the h5 file.
+    Get tatums confidence array. Takes care of the proper indexing if we are in
+    aggregate file. By default, return the array for the first song in the h5 file.
     To get a regular numpy ndarray, cast the result to: numpy.array( )
     """
     if h5.root.analysis.songs.nrows == songidx + 1:
@@ -599,8 +599,8 @@ def get_tatums_confidence(h5, songidx=0):
 
 def get_artist_mbtags(h5, songidx=0):
     """
-    Get artist musicbrainz tag array. Takes care of the proper indexing if we are in aggregate
-    file. By default, return the array for the first song in the h5 file.
+    Get artist musicbrainz tag array. Takes care of the proper indexing if we are
+    in aggregate file. By default, return the array for the first song in the h5 file.
     To get a regular numpy ndarray, cast the result to: numpy.array( )
     """
     if h5.root.musicbrainz.songs.nrows == songidx + 1:
@@ -620,8 +620,8 @@ def get_artist_mbtags(h5, songidx=0):
 
 def get_artist_mbtags_count(h5, songidx=0):
     """
-    Get artist musicbrainz tag count array. Takes care of the proper indexing if we are in aggregate
-    file. By default, return the array for the first song in the h5 file.
+    Get artist musicbrainz tag count array. Takes care of the proper indexing if we are
+    in aggregate file. By default, return the array for the first song in the h5 file.
     To get a regular numpy ndarray, cast the result to: numpy.array( )
     """
     if h5.root.musicbrainz.songs.nrows == songidx + 1:
