@@ -1,3 +1,11 @@
+"""
+extraction_helpers.py
+
+Yuri Avanci Laguardia e Henrique Laguardia Heringer Faria
+
+Módulo destinado a implementar a operação de extração de músicas da base completa
+do "Million Song Dataset" (http://millionsongdataset.com/)
+"""
 import glob
 import numpy as np
 import pandas as pd
@@ -5,14 +13,22 @@ from tqdm.notebook import tqdm
 
 from . import hdf5_getters
 
-# Allow progress bar
+# Permite mostrar uma barra de progresso durante a operação
 tqdm.pandas()
 
 
 def get_total_features(path_hdf5: str):
-    """Load the features name from the metadata into a list
+    """Extrai o nome das features dos metadados e agrega em uma lista
 
-    So that we don't have to insert them manually
+    Para que não precisemos inseri-los manualmente
+
+    Args:
+        path_hdf5 (str): caminho para um arquivo de exemplo em formato hdf5 que será
+        usado como modelo para extrair os nomes da colunas/features
+        - Ex: "../sample_data/TRAXLZU12903D05F94.h5"
+
+    Returns:
+        list[str]: lista com os nomes de todas as colunas/features.
     """
     h5_summary = hdf5_getters.open_h5_file_read(path_hdf5)
 
@@ -46,27 +62,31 @@ def load_song_data(
     half: int = None,
     max_songs: int = None,
 ) -> pd.DataFrame:
-    """Extract song data from HDF5 files into a dataframe
+    """Extrai dados de músicas de arquivos HDF5 para um pandas dataframe
 
     Args:
-        - dataset_root_dir (str): path to the root dir of the dataset
-        - sample_hdf5_file_path (str): path to a sample HDF5 file
-        - letter (str, optional): a letter representing the name of the dir to be
-            searched. Defaults to "*" (which means ALL dirs and subdirs).
-        - half (int, optional): Which half of the dir we want to explore.
-            Defaults to None (which means: sarch the entire dir and subdirs).
-        - max_songs (int, optional): The maximum number of song we want to extract.
-            Defaults to None (which means ALL SONGS inside the dir and subdirs)
+        - dataset_root_dir (str): Caminho para a raiz do diretório que contém a base
+        - sample_hdf5_file_path (str): Caminho para um arquivo HDF5 de exemplo
+        - letter (str, optional): o nome do diretório onde queremos realizar a busca
+            (na base original, todos os diretório são denominados "A", "B", "C" etc)
+            - Por padrão, "*" (que significa todos os diretórios e subdiretórios).
+        - half (int, optional): Qual metade do diretório queremos explorar.
+            Definimos a 1ª metade como sendo as letras de A até M, 2ª metade sendo N a Z
+            - Por padrão, None (significa: procurar diretório inteiro, em vez de metade)
+        - max_songs (int, optional): O número máximo de músicas que queremos extrair.
+            - Por padrão, None (que significa TODAS as músicas de todos diretórios)
 
     Returns:
-        pd.DataFrame: a dataframe contained information about the extracted songs
+        pd.DataFrame: um dataframe contendo informações sobre as músicas extraídas
     """
+    # Definição do que é 1ª metade e o que é 2ª metade.
     regex_half_map = {1: "[A-M]", 2: "[N-Z]"}
 
+    # Por padrão, busca-se em todos os diretórios (todas as letras)
     if half is None:
         regex = "[A-Z]"
     else:
-        assert half in [1, 2], "half must be one or two"
+        assert half in [1, 2], "'half' deve ser 1 ou 2"
         regex = regex_half_map[half]
 
     path = dataset_root_dir
@@ -74,8 +94,9 @@ def load_song_data(
     data = []
     file_paths = glob.glob(f"{path}/{letter}/{regex}/*/*.h5")
 
+    # tdqm aqui é utilizado para mostrar barra de progresso durante a operação
+    count = 0
     for file_path in tqdm(file_paths, total=len(file_paths)):
-        # for file_path in file_paths:
         h5file = hdf5_getters.open_h5_file_read(file_path)
         datapoint = {}
         for cat in categories:
@@ -83,8 +104,8 @@ def load_song_data(
             datapoint[cat] = attr
         h5file.close()
 
-        # Only include tracks with song_hotttnesss, artist_latitude, artist_longitude,
-        # year, artist_mbtags and artist_mbtags_count
+        # Queremos tracks que necessariamente contenham as features abaixo não nulas
+        # A depender do tipo de dado, temos diferentes definições para que é "nulo"
         if all(
             [
                 pd.notna(datapoint.get("song_hotttnesss")),
